@@ -14,15 +14,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'KWS License Issuance') }}
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -30,35 +30,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @if(Auth::user())
-                    @if (Auth::user()->is_admin)
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/clients">Clients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/licenses">Licenses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/pending">Pending</a>
-                        </li> 
-                    </ul> 
-                    @else
-                    <ul class="navbar-nav me-auto">
-                        @if (Auth::user()->client_id == null)
-                        <li class="nav-item">
-                            <a class="nav-link" href="/client">Apply</a>
-                        </li>
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="/license">Renew</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/all/licenses">Records</a>
-                        </li> 
-                    </ul> 
-                    @endif
-                    @endif
+
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -82,14 +56,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    
-                                    @if(Auth::user()->is_admin)
-                                    <a class="dropdown-item" href="/"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Dashboard
-                                    </a>
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

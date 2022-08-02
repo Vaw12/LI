@@ -24,4 +24,8 @@ class Client extends Model
     public function licenses(){
         return $this->hasMany(Licenses::class);
     }
+
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 }

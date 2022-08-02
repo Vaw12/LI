@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('national_id');
             $table->string('physical_address');
             $table->string('email_address');
-            $table->string('org_number');
+            $table->integer('org_number');
             $table->foreignId('user_id');
             $table->timestamps();
         });
